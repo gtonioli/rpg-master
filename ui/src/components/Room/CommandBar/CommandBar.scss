@@ -1,6 +1,15 @@
 @import "../../../scss/colors";
 
 .command-bar {
+  display: flex;
   background: $gray;
   height: 115px;
+  padding: 10px;
+
+  .default-dices {
+    width: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

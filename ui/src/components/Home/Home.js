@@ -47,21 +47,21 @@ class Home extends Component {
 
       return (
          <div className="home container-fluid">
-            <div className="form-group content container-fluid rounded">
+            <form className="form-group content container-fluid rounded">
                <img src={logo} className="img-fluid mx-auto d-block logo" alt="RPG Master"/>
                <div className="form-group">
-                  <input type="text" className="form-control" placeholder="Nome"
+                  <input type="text" className="form-control" placeholder="Name"
                          onChange={(e) => this.handleNameChange(e)}/>
                </div>
                <div className="form-group">
                   <input type="text" className="form-control" placeholder="Room id" value={this.state.roomId}
                          onChange={(e) => this.handleRoomIdChange(e)}/>
                </div>
-               <button type="button" className="btn btn-pink btn-join" disabled={!this.canBeSubmitted()}
+               <button type="submit" className="btn btn-pink btn-join" disabled={!this.canBeSubmitted()}
                        onClick={() => this.joinSession()}>
-                  Entrar
+                  Join
                </button>
-            </div>
+            </form>
          </div>
       );
    }

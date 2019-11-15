@@ -1,8 +1,9 @@
-import {WS_USERSLIST} from "../constants/actionTypes";
+import {WS_ACTION, WS_USERSLIST} from "../constants/actionTypes";
 
 const initialSetup = {
    users: [],
-   lastUpdateUsers: Date.now()
+   lastUpdateUsers: Date.now(),
+   actions: []
 };
 
 export const room = (state = initialSetup, action) => {
@@ -17,6 +18,11 @@ export const room = (state = initialSetup, action) => {
          }
 
          return state;
+      case WS_ACTION:
+         return {
+            ...state,
+            actions: [...state.actions, action.data]
+         };
       default:
          return state;
    }

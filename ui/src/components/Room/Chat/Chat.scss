@@ -3,4 +3,6 @@
 .chat {
   background: $light-gray;
   height: calc(100vh - 115px);
+  overflow: auto;
+  padding: 10px;
 }

@@ -1,3 +1,9 @@
-import {joinSession, leaveSession, setRoomId} from "./session";
+import {joinSession, leaveSession, setRoomId} from './session';
+import {roll} from './room';
 
-export {joinSession, leaveSession, setRoomId};
+export {
+   joinSession,
+   leaveSession,
+   setRoomId,
+   roll
+};

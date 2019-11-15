@@ -9,8 +9,8 @@ class SocketHandler {
       this.userManager = new UserManager();
    }
 
-   emitAction(room, event) {
-      this.io.sockets.in(room).emit("action", {event});
+   emitAction(room, action) {
+      this.io.sockets.in(room).emit("action", action);
    }
 
    emitAllUsers(room) {
@@ -34,12 +34,14 @@ class SocketHandler {
 
       const leave = () => {
          const user = self.userManager.get(socket.id);
+         const timestamp = Date.now();
 
          if (user) {
             self.userManager.delete(socket.id);
 
             self.emitAction(user.room, new Action(ACTION_LEAVE, {
-               name: user.name
+               name: user.name,
+               timestamp
             }));
 
             self.emitAllUsers(user.room);
@@ -49,20 +51,22 @@ class SocketHandler {
       };
 
       socket.on("join", (event) => {
-         self.emitAction(event.room, new Action(ACTION_JOIN, {
-            name: event.name,
-            id: socket.id
-         }));
+         const timestamp = Date.now();
 
          socket.join(event.room);
 
          self.userManager.ingest(socket.id, {
             name: event.name,
             room: event.room,
-            connectTime: Date.now()
+            connectTime: timestamp
          });
 
          self.emitAllUsers(event.room);
+
+         self.emitAction(event.room, new Action(ACTION_JOIN, {
+            name: event.name,
+            timestamp
+         }));
       });
 
       socket.on("leave", () => {
@@ -74,12 +78,21 @@ class SocketHandler {
       });
 
       socket.on("roll", (event) => {
-         const action = new Action(ACTION_ROLL, self.roll.roll(event.input));
+         const user = self.userManager.get(socket.id);
+         const timestamp = Date.now();
 
-         if (event.private === true) {
-            socket.emit("action", {action});
-         } else {
-            self.emitAction(event.room, action);
+         if (user) {
+            const action = new Action(ACTION_ROLL, {
+               user: user.name,
+               result: self.roll.roll(event.input),
+               timestamp
+            });
+
+            if (event.private === true) {
+               socket.emit("action", action);
+            } else {
+               self.emitAction(event.room, action);
+            }
          }
       });
    }
