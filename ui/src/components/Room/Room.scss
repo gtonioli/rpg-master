@@ -1,0 +1,17 @@
+@import "../../scss/colors";
+
+$user-list-size: 200px;
+$content-size: calc(100vw - #{$user-list-size});
+
+.room {
+  display: flex;
+  background: $gray;
+
+  .content {
+    width: $content-size;
+  }
+
+  .users-list {
+    width: $user-list-size;
+  }
+}

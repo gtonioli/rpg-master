@@ -1,0 +1,19 @@
+{
+   "name": "rpg-master-server",
+   "version": "1.0.0",
+   "scripts": {
+      "build": "babel src --out-dir dist",
+      "start": "npm run-script build && node dist/server.js"
+   },
+   "dependencies": {
+      "@babel/polyfill": "^7.7.0",
+      "express": "^4.17.1",
+      "roll": "^1.2.0",
+      "socket.io": "^2.3.0"
+   },
+   "devDependencies": {
+      "@babel/cli": "^7.7.0",
+      "@babel/core": "^7.7.2",
+      "@babel/preset-env": "^7.7.1"
+   }
+}
