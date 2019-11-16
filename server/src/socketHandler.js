@@ -85,6 +85,7 @@ class SocketHandler {
             const action = new Action(ACTION_ROLL, {
                user: user.name,
                result: self.roll.roll(event.input),
+               input: event.input,
                timestamp
             });
 

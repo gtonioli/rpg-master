@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Entry from "./Entry/Entry";
 import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
 
 import './Chat.scss';
 
 class Chat extends Component {
-   getChatEntry(action) {
-      if (action.type === "join") {
+   componentDidUpdate() {
+      const {scrollTop, scrollHeight, offsetHeight} = document.getElementsByClassName("chat")[0];
 
-      } else if (action.type === "leave") {
-
-      } else if (action.type === "roll") {
-
+      if (scrollHeight - (scrollTop + offsetHeight) < 200) {
+         document.getElementsByClassName("chat")[0].scrollTop = document.getElementsByClassName("chat")[0].scrollHeight;
       }
    }
 
@@ -25,7 +24,7 @@ class Chat extends Component {
                actions.map((action) => {
                   return (
                      <div key={uuidv4()}>
-                        {this.getChatEntry(action)}
+                        <Entry action={action}/>
                      </div>
                   );
                })

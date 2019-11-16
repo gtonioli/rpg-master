@@ -1,0 +1,20 @@
+@import "../../../../scss/colors";
+
+.entry {
+  margin-bottom: 5px;
+
+  .header {
+    .name {
+      font-size: 15px;
+      font-weight: bold;
+      margin-right: 7px;
+    }
+
+    .time {
+      font-size: 11px;
+      color: #6d6d6d;
+    }
+  }
+
+  @import "./Roll/Roll";
+}
