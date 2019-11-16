@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 import {messageTypes} from "./constants/websocket";
 
-const socket = io(process.env.socket, {
-   path: "/socket"
+const socket = io(process.env.socket.url, {
+   path: process.env.socket.path
 });
 
 export const init = (store) => {
