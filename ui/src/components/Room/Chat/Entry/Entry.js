@@ -11,13 +11,13 @@ class Entry extends Component {
       if (action.type === "join") {
          return (
             <Simple>
-               <b>{this.props.name}</b> joined the group!
+               <b>{data.name}</b> joined the group!
             </Simple>
          );
       } else if (action.type === "leave") {
          return (
             <Simple>
-               <b>{this.props.name}</b> left the group!
+               <b>{data.name}</b> left the group!
             </Simple>
          );
       } else if (action.type === "roll") {
