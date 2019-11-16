@@ -43,7 +43,7 @@ class Home extends Component {
    }
 
    render() {
-      const logo = require("../../../assets/images/site/dice.png");
+      const logo = require("../../../static/images/site/dice.png");
 
       return (
          <div className="home container-fluid">

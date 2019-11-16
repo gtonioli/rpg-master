@@ -10,7 +10,7 @@ export default (env) => {
    return {
       entry: './src/index.js',
       output: {
-         filename: (devMode ? 'rpg-master' : '[name].[contenthash]') + '.js',
+         filename: 'static/js/' + (devMode ? 'rpg-master' : '[name].[contenthash]') + '.js',
          path: path.resolve(__dirname, "dist")
       },
       module: {
@@ -47,10 +47,10 @@ export default (env) => {
       plugins: [
          new HtmlWebPackPlugin({
             template: './src/index.html',
-            favicon: './assets/images/site/favicon.ico'
+            favicon: './static/images/site/favicon.ico'
          }),
          new MiniCssExtractPlugin({
-            filename: (devMode ? 'rpg-master' : '[name].[contenthash]') + '.css'
+            filename: 'static/css/' + (devMode ? 'rpg-master' : '[name].[contenthash]') + '.css'
          }),
          new webpack.DefinePlugin({
             'process.env': {
