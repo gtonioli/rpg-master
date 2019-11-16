@@ -7,7 +7,7 @@ import SocketHandler from "./socketHandler";
 const app = express();
 const server = new Server(app);
 const io = new SocketIO(server, {
-   path: "/socket"
+   path: "/rpg-master/socket"
 });
 
 const port = process.env.PORT || 3000;

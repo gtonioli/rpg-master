@@ -55,10 +55,7 @@ export default (env) => {
          new webpack.DefinePlugin({
             'process.env': {
                'dev': devMode,
-               'socket': {
-                  'url': (devMode ? JSON.stringify('ws://localhost:3000') : JSON.stringify('wss://gtonioli.dev')),
-                  'path': JSON.stringify((devMode ? '' : '/rpg-master') + '/socket')
-               }
+               'socket': (devMode ? JSON.stringify('ws://localhost:3000') : JSON.stringify('wss://gtonioli.dev'))
             }
          }),
          new webpack.HashedModuleIdsPlugin()

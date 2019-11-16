@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 import {messageTypes} from "./constants/websocket";
 
-const socket = io(process.env.socket.url, {
-   path: process.env.socket.path
+const socket = io(process.env.socket, {
+   path: "/rpg-master/socket"
 });
 
 export const init = (store) => {
