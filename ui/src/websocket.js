@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import {messageTypes} from "./constants/websocket";
 
-const socket = io("localhost:3000", {
+const socket = io(process.env.socket, {
    path: "/socket"
 });
 
