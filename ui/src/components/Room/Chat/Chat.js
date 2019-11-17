@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Entry from "./Entry/Entry";
+import Entry from './Entry/Entry';
 import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
 

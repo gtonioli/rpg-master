@@ -1,4 +1,4 @@
-import {WS_ACTION, WS_USERSLIST} from "../constants/actionTypes";
+import {JOIN_SESSION, WS_ACTION, WS_USERSLIST} from '../constants/actionTypes';
 
 const initialSetup = {
    users: [],
@@ -8,6 +8,13 @@ const initialSetup = {
 
 export const room = (state = initialSetup, action) => {
    switch (action.type) {
+      case JOIN_SESSION:
+         return {
+            ...state,
+            users: [],
+            lastUpdateUsers: Date.now(),
+            actions: []
+         };
       case WS_USERSLIST:
          if (action.data.timestamp > state.lastUpdateUsers) {
             return {

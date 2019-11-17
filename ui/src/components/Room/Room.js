@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Chat from "./Chat/Chat";
-import CommandBar from "./CommandBar/CommandBar";
-import UsersList from "./UsersList/UsersList";
-import {setRoomId} from "../../actions";
+import Chat from './Chat/Chat';
+import CommandBar from './CommandBar/CommandBar';
+import UsersList from './UsersList/UsersList';
+import {setRoomId} from '../../actions';
 
 import './Room.scss';
 
@@ -18,6 +18,12 @@ class Room extends Component {
             this.props.setRoomId(roomIdParam);
             this.props.history.push(`/`);
          }
+      }
+   }
+
+   componentDidUpdate() {
+      if (!this.props.isConnected) {
+         this.props.history.push("/");
       }
    }
 
@@ -36,7 +42,8 @@ class Room extends Component {
 
 const mapStateToProps = (state) => {
    const session = state.session;
-   return {session};
+   const {isConnected} = state.websocket;
+   return {session, isConnected};
 };
 
 const mapDispatchToProps = dispatch => {

@@ -1,4 +1,4 @@
-import {JOIN_SESSION, RESET_SESSION, SET_ROOM_ID} from "../constants/actionTypes";
+import {JOIN_SESSION, RESET_SESSION, SET_ROOM_ID} from '../constants/actionTypes';
 
 const initialState = {
    name: null,
@@ -15,7 +15,6 @@ export const session = (state = initialState, action) => {
       case RESET_SESSION:
          return {
             ...state,
-            name: null,
             roomId: null
          };
       case SET_ROOM_ID:

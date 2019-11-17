@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Simple from "./Simple/Simple";
-import Roll from "./Roll/Roll";
+import Simple from './Simple/Simple';
+import Roll from './Roll/Roll';
 
 import './Entry.scss';
 

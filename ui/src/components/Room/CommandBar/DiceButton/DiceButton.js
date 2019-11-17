@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {roll} from '../../../../actions';
 
 import './DiceButton.scss';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
 class DiceButton extends Component {
    roll(dice) {

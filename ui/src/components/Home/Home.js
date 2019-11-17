@@ -9,12 +9,12 @@ class Home extends Component {
       super(props);
 
       const {name, roomId} = this.props.session;
-      if (name && roomId && name.length > 0 && roomId.length > 0) {
+      if (this.props.isConnected && name && roomId && name.length > 0 && roomId.length > 0) {
          this.props.history.push(`/room/${roomId}`);
       }
 
       this.state = {
-         name: "",
+         name: name ? name : "",
          roomId: roomId ? roomId : ""
       };
    }
@@ -33,7 +33,7 @@ class Home extends Component {
 
    canBeSubmitted() {
       const {name, roomId} = this.state;
-      return name.length > 0 && roomId.length > 0;
+      return name.length > 0 && roomId.length > 0 && this.props.isConnected;
    }
 
    joinSession() {
@@ -50,7 +50,7 @@ class Home extends Component {
             <form className="form-group content container-fluid rounded">
                <img src={logo} className="img-fluid mx-auto d-block logo" alt="RPG Master"/>
                <div className="form-group">
-                  <input type="text" className="form-control" placeholder="Name"
+                  <input type="text" className="form-control" placeholder="Name" value={this.state.name}
                          onChange={(e) => this.handleNameChange(e)}/>
                </div>
                <div className="form-group">
@@ -69,7 +69,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
    const session = state.session;
-   return {session};
+   const {isConnected} = state.websocket;
+   return {session, isConnected};
 };
 
 const mapDispatchToProps = dispatch => {
