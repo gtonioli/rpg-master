@@ -15,7 +15,7 @@ let appWithRouter;
 if (process.env.dev) {
    appWithRouter = <HashRouter><App/></HashRouter>;
 } else {
-   appWithRouter = <BrowserRouter><App/></BrowserRouter>;
+   appWithRouter = <BrowserRouter basename="/rpg-master"><App/></BrowserRouter>;
 }
 
 ReactDOM.render(
