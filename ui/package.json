@@ -1,6 +1,7 @@
 {
    "name": "rpg-master-ui",
    "version": "1.0.0",
+   "homepage": "https://gtonioli.dev/rpg-master",
    "scripts": {
       "start": "webpack-dev-server -d --env.development --open",
       "build": "rimraf dist && webpack --env.production"
