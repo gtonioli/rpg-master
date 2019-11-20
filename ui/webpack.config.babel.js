@@ -11,7 +11,8 @@ export default (env) => {
       entry: './src/index.js',
       output: {
          filename: 'static/js/' + (devMode ? 'rpg-master' : '[name].[contenthash]') + '.js',
-         path: path.resolve(__dirname, "dist")
+         path: path.resolve(__dirname, "dist"),
+         publicPath: devMode ? '/' : '/rpg-master'
       },
       module: {
          rules: [
